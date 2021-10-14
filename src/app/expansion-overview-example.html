@@ -1,0 +1,44 @@
+<div style="font-size: 20px">
+  <b>{{ name }}</b>
+</div>
+<div class="wrapper">
+  <ol class="StepProgress">
+    <li
+      class="StepProgress-item"
+      *ngFor="let item of candidate.status; let i = index"
+    >
+      <mat-expansion-panel hideToggle>
+        <mat-expansion-panel-header>
+          <div>
+            <strong>{{ item.status_type }}</strong>
+            {{ item.created_date }}
+          </div>
+          <div *ngIf="item.is_revisit" pTooltip="Rescheduled">
+            <img
+              style="width: 25px; height: 18px"
+              src="assets/images/reschedule-2158709-1814229.png"
+              alt="Rescheduled"
+            />
+          </div>
+        </mat-expansion-panel-header>
+        <div *ngIf="item?.created_by || item?.created_by_name">
+          Initiated By: {{ item.created_by_name }}<br />
+        </div>
+        <div *ngIf="item?.l2_panel">L2 Panel: {{ item?.l2_panel }}<br /></div>
+        <div *ngIf="item?.l2_date">L2 Date: {{ item?.l2_date }} <br /></div>
+        <div *ngIf="item?.l1_panel">L1 Panel: {{ item?.l1_panel }}<br /></div>
+        <div *ngIf="item?.l1_date">L1 Date: {{ item?.l1_date }} <br /></div>
+        <div *ngIf="item?.recruiter_name">
+          Recruiter: {{ item?.recruiter_name }} <br />
+        </div>
+        <div *ngIf="item?.expected_ctc">
+          Expected CTC: {{ item?.expected_ctc }} <br />
+        </div>
+        <div *ngIf="item?.rejection_reason">
+          Rejection Reason: {{ item?.rejection_reason }} <br />
+        </div>
+        <div *ngIf="item?.offer_ctc">Offered CTC: {{ item?.offer_ctc }}</div>
+      </mat-expansion-panel>
+    </li>
+  </ol>
+</div>
